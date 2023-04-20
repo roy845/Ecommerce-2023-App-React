@@ -16,6 +16,9 @@ import { fileURLToPath } from "url";
 //configure env
 dotenv.config();
 
+//database config
+connectDB();
+
 //esmodule fix
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -45,8 +48,8 @@ app.use("*", (req, res) => {
 const PORT = process.env.PORT || 8080;
 
 //run listen
-connectDB().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`);
-  });
+app.listen(PORT, () => {
+  console.log(
+    `Server Running on mode ${process.env.DEV_MODE} ${PORT}`.bgCyan.white
+  );
 });
