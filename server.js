@@ -25,7 +25,7 @@ const app = express();
 
 //middlewares
 app.use(credentials);
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "./client/build")));
