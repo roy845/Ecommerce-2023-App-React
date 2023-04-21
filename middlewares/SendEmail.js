@@ -20,7 +20,7 @@ export const sendEmailResetPassword = async (email, token) => {
     html: `
       <p>To reset your password, click the link below:</p>
       <p>The link is valid for only 15 minutes. after that you need to generate another link.</p>
-      <a href="https://thankful-outfit-boa.cyclic.app/reset-password/${token}/reset-password/${token}">Reset Password</a>
+      <a href="https://thankful-outfit-boa.cyclic.app/reset-password/${token}">Reset Password</a>
     `,
   };
 
