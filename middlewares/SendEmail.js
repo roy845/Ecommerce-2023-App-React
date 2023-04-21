@@ -3,8 +3,6 @@ import dotenv from "dotenv";
 //configure env
 dotenv.config();
 
-console.log(process.env.EMAIL_USERNAME);
-console.log(process.env.EMAIL_PASSWORD);
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -22,11 +20,11 @@ export const sendEmailResetPassword = async (email, token) => {
     html: `
       <p>To reset your password, click the link below:</p>
       <p>The link is valid for only 15 minutes. after that you need to generate another link.</p>
-      <a href="http://localhost:3000/reset-password/${token}">Reset Password</a>
+      <a href="https://thankful-outfit-boa.cyclic.app/reset-password/${token}">Reset Password</a>
     `,
   };
 
-  transporter.sendMail(ResetPasswordMessage);
+  return await transporter.sendMail(ResetPasswordMessage);
 };
 
 export const sendEmail = async (email, subject, text) => {

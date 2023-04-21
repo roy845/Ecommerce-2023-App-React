@@ -11,6 +11,7 @@ import cors from "cors";
 import credentials from "./middlewares/credentials.js";
 import corsOptions from "./config/corsOptions.js";
 import path from "path";
+import { fileURLToPath } from "url";
 
 //configure env
 dotenv.config();
@@ -18,12 +19,16 @@ dotenv.config();
 //database config
 connectDB();
 
+//esmodule fix
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // rest object
 const app = express();
 
 //middlewares
 app.use(credentials);
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "./client/build")));
